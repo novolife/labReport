@@ -35,7 +35,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Start - labReport</string>
+   <string>欢迎 - labReport</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -119,7 +119,7 @@
              <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;New Report &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;新建报告(N) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -137,7 +137,7 @@
              <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Open Report &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;打开报告(O) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -155,7 +155,7 @@
              <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#ffffff;&quot;&gt;Exit Program &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;&lt;span style=&quot; font-style:italic; color:#ffffff;&quot;&gt;退出程序(X) &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -178,7 +178,7 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>文件</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
@@ -187,49 +187,56 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>帮助</string>
     </property>
-    <widget class="QMenu" name="menuLanguage">
-     <property name="title">
-      <string>Language</string>
-     </property>
-     <addaction name="actionEnglish"/>
-     <addaction name="actionZHS"/>
-    </widget>
-    <addaction name="menuLanguage"/>
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/resource/icon/open.ico</normaloff>:/resource/icon/open.ico</iconset>
+   </property>
    <property name="text">
-    <string>Open</string>
+    <string>打开...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/resource/icon/exit.ico</normaloff>:/resource/icon/exit.ico</iconset>
+   </property>
    <property name="text">
-    <string>Exit</string>
+    <string>退出</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
    </property>
   </action>
   <action name="actionAbout">
-   <property name="text">
-    <string>About</string>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/resource/icon/about.ico</normaloff>:/resource/icon/about.ico</iconset>
    </property>
-  </action>
-  <action name="actionEnglish">
    <property name="text">
-    <string>English</string>
-   </property>
-  </action>
-  <action name="actionZHS">
-   <property name="text">
-    <string>简体中文</string>
+    <string>关于</string>
    </property>
   </action>
   <action name="actionNew">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/resource/icon/new.ico</normaloff>:/resource/icon/new.ico</iconset>
+   </property>
    <property name="text">
-    <string>New</string>
+    <string>新建</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
  </widget>
@@ -244,6 +251,8 @@
    </slots>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -21,7 +21,9 @@ Start::~Start()
 
 void Start::get_setting_map(QMap<QString, QString> rSet)
 {
-    //qDebug() << rSet;
+    MainWindow *w = new MainWindow(rSet);
+    w->show();
+    this->close();
 }
 
 void Start::new_report()
@@ -44,4 +46,25 @@ void Start::on_open_clicked()
 void Start::on_exit_clicked()
 {
     this->close();
+}
+
+void Start::on_actionOpen_triggered()
+{
+    //open_report();
+}
+
+void Start::on_actionExit_triggered()
+{
+    this->close();
+}
+
+void Start::on_actionAbout_triggered()
+{
+    about *about_dialog = new about();
+    about_dialog->show();
+}
+
+void Start::on_actionNew_triggered()
+{
+    new_report();
 }

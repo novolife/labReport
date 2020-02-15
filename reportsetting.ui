@@ -35,7 +35,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Report Setting - labReport</string>
+   <string>报告信息设置 - labReport</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -55,7 +55,7 @@
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Report Setting&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;报告信息设置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
@@ -70,7 +70,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Name</string>
+        <string>学生姓名</string>
        </property>
       </widget>
      </item>
@@ -93,7 +93,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Student ID</string>
+        <string>学生学号</string>
        </property>
       </widget>
      </item>
@@ -116,7 +116,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Course Name</string>
+        <string>课程名称</string>
        </property>
       </widget>
      </item>
@@ -139,7 +139,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Course Teacher</string>
+        <string>理论教师</string>
        </property>
       </widget>
      </item>
@@ -162,7 +162,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Lab Teacher</string>
+        <string>实验教师</string>
        </property>
       </widget>
      </item>
@@ -185,7 +185,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Address</string>
+        <string>实验地址</string>
        </property>
       </widget>
      </item>
@@ -208,7 +208,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Date</string>
+        <string>实验日期</string>
        </property>
       </widget>
      </item>
@@ -231,7 +231,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Room</string>
+        <string>实验室名</string>
        </property>
       </widget>
      </item>
@@ -254,7 +254,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Expriment</string>
+        <string>实验名称</string>
        </property>
       </widget>
      </item>
@@ -277,7 +277,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Hour</string>
+        <string>实验学时</string>
        </property>
       </widget>
      </item>
@@ -292,6 +292,18 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>* 本部分设置可以跳过之后填充</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">

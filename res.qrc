@@ -7,5 +7,13 @@
         <file>resource/banner-image/4.jpg</file>
         <file>resource/banner-image/5.jpg</file>
         <file>resource/banner-image/6.jpg</file>
+        <file>resource/icon/about.ico</file>
+        <file>resource/icon/exit.ico</file>
+        <file>resource/icon/new.ico</file>
+        <file>resource/icon/open.ico</file>
+        <file>resource/icon/redo.ico</file>
+        <file>resource/icon/run.ico</file>
+        <file>resource/icon/save.ico</file>
+        <file>resource/icon/undo.ico</file>
     </qresource>
 </RCC>

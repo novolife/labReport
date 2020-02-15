@@ -7,6 +7,7 @@
 
 #include "mainwindow.h"
 #include "reportsetting.h"
+#include "about.h"
 
 namespace Ui {
 class Start;
@@ -26,6 +27,14 @@ private slots:
     void on_new_2_clicked();
     void on_open_clicked();
     void on_exit_clicked();
+
+    void on_actionOpen_triggered();
+
+    void on_actionExit_triggered();
+
+    void on_actionAbout_triggered();
+
+    void on_actionNew_triggered();
 
 private:
     Ui::Start *ui;
