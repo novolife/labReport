@@ -7,6 +7,7 @@ ReportSetting::ReportSetting(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_ShowModal, true);
+    ui->sid->setValidator(new QRegularExpressionValidator(QRegularExpression("\\d{13}")));
 }
 
 ReportSetting::~ReportSetting()
