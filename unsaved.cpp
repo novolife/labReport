@@ -14,21 +14,16 @@ unsaved::~unsaved()
     delete ui;
 }
 
-void unsaved::on_buttonBox_accepted()
-{
-    emit send_unsaved();
-    this->close();
-}
-
 void unsaved::on_buttonBox_clicked(QAbstractButton *button)
 {
-    if (button == ui->buttonBox->button(QDialogButtonBox::Cancel))
-    {
-        this->close();
-    }
-    else if (button == ui->buttonBox->button(QDialogButtonBox::No))
+    if (button == ui->buttonBox->button(QDialogButtonBox::Yes))
     {
         emit no_unsaved();
-        this->close();
     }
+    else if (button == ui->buttonBox->button(QDialogButtonBox::Save))
+    {
+        emit send_unsaved();
+    }
+
+    close();
 }

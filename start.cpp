@@ -33,6 +33,11 @@ void Start::new_report()
     r->show();
 }
 
+void Start::open_report()
+{
+
+}
+
 void Start::on_new_2_clicked()
 {
     new_report();
@@ -40,22 +45,22 @@ void Start::on_new_2_clicked()
 
 void Start::on_open_clicked()
 {
-    //open_report();
+    open_report();
 }
 
 void Start::on_exit_clicked()
 {
-    this->close();
+    close();
 }
 
 void Start::on_actionOpen_triggered()
 {
-    //open_report();
+    open_report();
 }
 
 void Start::on_actionExit_triggered()
 {
-    this->close();
+    close();
 }
 
 void Start::on_actionAbout_triggered()

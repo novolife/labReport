@@ -29,5 +29,4 @@ void ReportSetting::on_buttonBox_accepted()
     rSet.insert("eName", ui->ename->text());
     rSet.insert("eHour", ui->ehour->text());
     emit send_setting_map(rSet);
-    this->accept();
 }

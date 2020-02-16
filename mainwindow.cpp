@@ -85,7 +85,7 @@ void MainWindow::on_actionRedo_triggered()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if(get_status() == SAVED)
+    if(get_status() == SAVED || get_status() == NOSAVE)
         event->accept();
     else if (get_status() == UNSAVED)
     {
@@ -106,7 +106,7 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_actionExit_triggered()
 {
-    this->close();
+    close();
 }
 
 void MainWindow::save_unsaved()
@@ -117,5 +117,5 @@ void MainWindow::save_unsaved()
 void MainWindow::nosave_unsaved()
 {
     set_status(NOSAVE);
-    this->close();
+    close();
 }
