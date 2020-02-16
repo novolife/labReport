@@ -89,10 +89,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->accept();
     else if (get_status() == UNSAVED)
     {
-        if (QMessageBox::information(this, "报告未保存", "是否仍要退出程序？", QMessageBox::Ok, QMessageBox::No) == QMessageBox::Ok)
-            event->accept();
-        else
-            event->ignore();
+        unsaved *dialog = new unsaved(this);
+        connect(dialog, &unsaved::send_unsaved, this, &MainWindow::save_unsaved);
+        connect(dialog, &unsaved::no_unsaved, this, &MainWindow::nosave_unsaved);
+        dialog->show();
+        event->ignore();
     }
 
 }
@@ -105,5 +106,16 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_actionExit_triggered()
 {
+    this->close();
+}
+
+void MainWindow::save_unsaved()
+{
+
+}
+
+void MainWindow::nosave_unsaved()
+{
+    set_status(NOSAVE);
     this->close();
 }

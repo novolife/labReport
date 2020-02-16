@@ -21,20 +21,23 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     reportsetting.cpp \
-    start.cpp
+    start.cpp \
+    unsaved.cpp
 
 HEADERS += \
     about.h \
     exlabel.h \
     mainwindow.h \
     reportsetting.h \
-    start.h
+    start.h \
+    unsaved.h
 
 FORMS += \
     about.ui \
     mainwindow.ui \
     reportsetting.ui \
-    start.ui
+    start.ui \
+    unsaved.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
