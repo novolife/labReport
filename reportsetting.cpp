@@ -18,15 +18,15 @@ ReportSetting::~ReportSetting()
 void ReportSetting::on_buttonBox_accepted()
 {
     QMap<QString, QString> rSet;
-    rSet.insert("sName", ui->sname->text());
-    rSet.insert("sID", ui->sid->text());
-    rSet.insert("cName", ui->cname->text());
-    rSet.insert("cTchr", ui->ctchr->text());
-    rSet.insert("eTchr", ui->etchr->text());
-    rSet.insert("eAddr", ui->eaddr->text());
-    rSet.insert("eDate", ui->edate->text());
-    rSet.insert("eRoom", ui->eroom->text());
-    rSet.insert("eName", ui->ename->text());
-    rSet.insert("eHour", ui->ehour->text());
+    rSet.insert("sname", ui->sname->text());
+    rSet.insert("sid", ui->sid->text());
+    rSet.insert("cname", ui->cname->text());
+    rSet.insert("ctchr", ui->ctchr->text());
+    rSet.insert("etchr", ui->etchr->text());
+    rSet.insert("eaddr", ui->eaddr->text());
+    rSet.insert("edate", ui->edate->text());
+    rSet.insert("eroom", ui->eroom->text());
+    rSet.insert("ename", ui->ename->text());
+    rSet.insert("ehour", ui->ehour->text());
     emit send_setting_map(rSet);
 }

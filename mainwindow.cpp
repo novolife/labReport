@@ -1,53 +1,50 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QMap<QString, QString> rSet, QWidget *parent)
+MainWindow::MainWindow(QMap<QString, QString> proSet, QMap<QString, QString> txtSet, QString rAdd, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->sid->setValidator(new QRegularExpressionValidator(QRegularExpression("\\d{13}")));
-    report_set = rSet;
 
-    while(1)
-    {
-        save_add = QFileDialog::getSaveFileName(this, "Select Saving Position", "./untitled.rpt", "Report File (*.rpt)");
-        file_info = new QFileInfo(save_add);
+    report_set = proSet;
+    save_add = rAdd;
 
-        if (save_add == "")
-        {
-            QMessageBox::critical(this, "Please Select Saving Position!", "Report Saving Position Could NOT Be Empty.");
-        }
-        else if (file_info->suffix() != ".rpt")
-        {
-            QMessageBox::critical(this, "Please Use Correct Suffix!", "Report File Suffix MUST BE \".rpt\"");
-        }
-        else
-        {
-            break;
-        }
-    }
-
+    // Get File Name & Set As Title
     file_info = new QFileInfo(save_add);
     file_name = file_info->fileName();
     setWindowTitle(file_name + "* - labReport");
 
+    // Create Report File
     save_file = new QFile(save_add);
     save_file->open(QIODevice::WriteOnly);
     save_file->close();
 
+    // Open Report As Setting File
     setting_file = new QSettings(save_add, QSettings::IniFormat);
 
-    ui->sname->setText(rSet["sName"]);
-    ui->sid->setText(rSet["sID"]);
-    ui->cname->setText(rSet["cName"]);
-    ui->etchr->setText(rSet["eTchr"]);
-    ui->ctchr->setText(rSet["cTchr"]);
-    ui->eaddr->setText(rSet["eAddr"]);
-    ui->edate->setDate(QDate::fromString(rSet["eDate"]));
-    ui->eroom->setText(rSet["eRoom"]);
-    ui->ename->setText(rSet["eName"]);
-    ui->ehour->setText(rSet["eHour"]);
+    // Put The Settings On UI
+    ui->sname->setText(proSet["sname"]);
+    ui->sid->setText(proSet["sid"]);
+    ui->cname->setText(proSet["cname"]);
+    ui->etchr->setText(proSet["etchr"]);
+    ui->ctchr->setText(proSet["ctchr"]);
+    ui->eaddr->setText(proSet["eaddr"]);
+    ui->edate->setDate(QDate::fromString(proSet["edate"]));
+    ui->eroom->setText(proSet["eroom"]);
+    ui->ename->setText(proSet["ename"]);
+    ui->ehour->setText(proSet["ehour"]);
+
+    ui->eprin->setText(txtSet["eprin"]);
+    ui->epurp->setText(txtSet["epurp"]);
+    ui->econt->setText(txtSet["econt"]);
+    ui->etool->setText(txtSet["etool"]);
+    ui->estep->setText(txtSet["estep"]);
+    ui->erslt->setText(txtSet["erslt"]);
+    ui->ecncl->setText(txtSet["ecncl"]);
+    ui->efeel->setText(txtSet["efeel"]);
+    ui->eadvs->setText(txtSet["eadvs"]);
 }
 
 MainWindow::~MainWindow()
@@ -107,9 +104,8 @@ void MainWindow::on_actionRedo_triggered()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if(get_status() == SAVED)
+    if(get_status() == SAVED || get_status() == NOSAVE)
     {
-        saving_file();
         event->accept();
     }
     else if (get_status() == UNSAVED)
@@ -120,11 +116,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
         dialog->show();
         event->ignore();
     }
-    else if (get_status() == NOSAVE)
-    {
-        event->accept();
-    }
-
 }
 
 /**
@@ -132,16 +123,16 @@ void MainWindow::closeEvent(QCloseEvent *event)
  */
 void MainWindow::saving_file()
 {
-    setting_file->setValue("profile/sname", report_set["sName"]);
-    setting_file->setValue("profile/sid", report_set["sID"]);
-    setting_file->setValue("profile/cname", report_set["cName"]);
-    setting_file->setValue("profile/etchr", report_set["eTchr"]);
-    setting_file->setValue("profile/ctchr", report_set["cTchr"]);
-    setting_file->setValue("profile/eaddr", report_set["eAddr"]);
-    setting_file->setValue("profile/edate", report_set["eDate"]);
-    setting_file->setValue("profile/eroom", report_set["eRoom"]);
-    setting_file->setValue("profile/ename", report_set["eName"]);
-    setting_file->setValue("profile/ehour", report_set["eHour"]);
+    setting_file->setValue("profile/sname", ui->sname->text());
+    setting_file->setValue("profile/sid", ui->sid->text());
+    setting_file->setValue("profile/cname", ui->cname->text());
+    setting_file->setValue("profile/etchr", ui->etchr->text());
+    setting_file->setValue("profile/ctchr", ui->ctchr->text());
+    setting_file->setValue("profile/eaddr", ui->eaddr->text());
+    setting_file->setValue("profile/edate", ui->edate->text());
+    setting_file->setValue("profile/eroom", ui->eroom->text());
+    setting_file->setValue("profile/ename", ui->ename->text());
+    setting_file->setValue("profile/ehour", ui->ehour->text());
 
     setting_file->setValue("text/eprin", ui->eprin->toPlainText());
     setting_file->setValue("text/epurp", ui->epurp->toPlainText());
@@ -153,7 +144,8 @@ void MainWindow::saving_file()
     setting_file->setValue("text/efeel", ui->efeel->toPlainText());
     setting_file->setValue("text/eadvs", ui->eadvs->toPlainText());
 
-    setWindowTitle(save_add + " - labReport");
+    setWindowTitle(file_name + " - labReport");
+    set_status(SAVED);
 }
 
 /**
@@ -179,6 +171,7 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::save_unsaved()
 {
     saving_file();
+    close();
 }
 
 /**
@@ -198,9 +191,13 @@ void MainWindow::on_actionSave_triggered()
     saving_file();
 }
 
+/**
+ * @brief MainWindow::unsaved_title
+ */
 void MainWindow::unsaved_title()
 {
-    setWindowTitle(save_add + "* - labReport");
+    set_status(UNSAVED);
+    setWindowTitle(file_name + "* - labReport");
 }
 
 void MainWindow::on_etool_textChanged()

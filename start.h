@@ -29,17 +29,15 @@ private slots:
     void on_exit_clicked();
 
     void on_actionOpen_triggered();
-
     void on_actionExit_triggered();
-
     void on_actionAbout_triggered();
-
     void on_actionNew_triggered();
 
 private:
     Ui::Start *ui;
     void new_report();
     void open_report();
+    QString get_save_add();
 };
 
 #endif // START_H

@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QMap<QString, QString>, QWidget *parent = nullptr);
+    MainWindow(QMap<QString, QString>, QMap<QString, QString> cSet, QString, QWidget *parent = nullptr);
     ~MainWindow();
     void closeEvent(QCloseEvent *event);
 
